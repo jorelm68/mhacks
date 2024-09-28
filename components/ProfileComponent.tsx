@@ -7,7 +7,6 @@ interface ProfileProps {
 
 export default function ProfileComponent({ profile_id }: ProfileProps) {
     const profile: Profile = useProfile(profile_id);
-    console.log(profile)
 
     return (
         <div>
