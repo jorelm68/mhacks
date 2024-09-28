@@ -11,6 +11,12 @@ async function handleRequest(route: string, type: string, data?: any): Promise<R
 
         const formData = new FormData()
 
+        if (data) {
+            for (const key in data) {
+                formData.append(key, data[key])
+            }
+        }
+
         const headers: any = {}
         if (data) {
             headers['Content-Type'] = 'multipart/form-data'
