@@ -6,6 +6,6 @@ export default function Game() {
         <>
             <h1>Game</h1>
             <p>This is the game page</p>
-        </>
+        </> 
     )
 }
