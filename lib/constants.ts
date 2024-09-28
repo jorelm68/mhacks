@@ -43,6 +43,9 @@ export default {
         createdAt: new Date(),
         updatedAt: new Date(),
     },
+    EMPTY_GLOBAL_STATE: {
+        profile_id: '',
+    },
     EMPTY_RES: {
         status: 0,
         success: false,
