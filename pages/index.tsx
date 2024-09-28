@@ -1,3 +1,7 @@
+// If you are logged in, two buttons:
+// Create a new game
+// Join a game
+
 export default function Home() {
   return (
     <>
