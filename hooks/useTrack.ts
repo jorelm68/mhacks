@@ -11,7 +11,7 @@ export function useTrack(track_id: string): Track {
             try {
                 const res: Res = await api.track.read(track_id);
                 if (res.success) {
-                    setTrack(res.data as Track);
+                    setTrack(res.data.track as Track);
                 } else {
                     console.error(res.errorMessage);
                 }

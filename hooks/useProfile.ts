@@ -8,10 +8,13 @@ export function useProfile(profile_id: string): Profile {
 
     useEffect(() => {
         const fetchProfile = async () => {
+            if (!profile_id) {
+                return;
+            }
             try {
                 const res: Res = await api.profile.read(profile_id);
                 if (res.success) {
-                    setProfile(res.data as Profile);
+                    setProfile(res.data.profile as Profile);
                 } else {
                     console.error(res.errorMessage);
                 }

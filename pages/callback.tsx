@@ -15,7 +15,6 @@ export default function Callback() {
 
     const exchangeCodeForTokens = async (code: string) => {
         try {
-            console.log(code);
             // Exchange authorization code for access and refresh tokens
             const tokenResponse = await axios.post('https://accounts.spotify.com/api/token', querystring.stringify({
                 grant_type: 'authorization_code',
@@ -52,7 +51,6 @@ export default function Callback() {
             const res: Res = await api.profile.authenticate(username);
 
             if (res.success) {
-                console.log('Authenticated on the back-end');
                 router.push('/');
             } else {
                 console.error(res.errorMessage);

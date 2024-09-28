@@ -11,7 +11,7 @@ export function useGame(game_id: string): Game {
             try {
                 const res: Res = await api.game.read(game_id);
                 if (res.success) {
-                    setGame(res.data as Game);
+                    setGame(res.data.game as Game);
                 } else {
                     console.error(res.errorMessage);
                 }

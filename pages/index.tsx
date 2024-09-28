@@ -3,6 +3,7 @@
 // Join a game
 
 import Navbar from "@/components/Navbar";
+import ProfileComponent from "@/components/ProfileComponent";
 import api from "@/lib/api";
 import { Res } from "@/lib/types";
 import { setProfileId } from "@/redux/global.reducer";
@@ -13,58 +14,42 @@ import { useDispatch } from "react-redux";
 
 export default function Home() {
   const dispatch = useDispatch();
-  const [accessToken, setAccessToken] = useState<string | null>(null);
-  const [refreshToken, setRefreshToken] = useState<string | null>(null);
-  const [error, setError] = useState<string | null>(null);
-  const [username, setUsername] = useState<string | null>(null);
-
-  // Function to check local storage for tokens and get the stored user
-  const checkLocalStorageForTokens = () => {
-    const storedAccessToken = localStorage.getItem('access_token');
-    const storedRefreshToken = localStorage.getItem('refresh_token');
-    const storedUsername = localStorage.getItem('username');
-
-    if (!storedUsername) {
-      return;
-    }
-
-    setUsername(storedUsername);
-    if (storedAccessToken) {
-      setAccessToken(storedAccessToken);
-    }
-    if (storedRefreshToken) {
-      setRefreshToken(storedRefreshToken);
-    }
-  };
+  const [profile_id, set_profile_id] = useState<string | null>(null);
 
   // Run upon mounting
   useEffect(() => {
-    checkLocalStorageForTokens();
-  }, [])
+    const authenticateUser = async () => {
+      try {
+        const username: string | null = localStorage.getItem('username');
 
-  const authenticateUsername = async (username: string) => {
-    const res: Res = await api.profile.authenticate(username);
-    if (res.success) {
-      return res.data; // profile_id
-    } else {
-      console.error(res.errorMessage);
-    }
-  }
+        if (username) {
+          // Authenticate
+          const res: Res = await api.profile.authenticate(username); // Make sure to await the result
 
-  // Function to get the profile_id from the backend from the username
-  useEffect(() => {
-    if (username) {
-      authenticateUsername(username).then(profile_id => {
-        dispatch(setProfileId(profile_id));
-      });
-    }
-  }, [username])
+          if (res.success) {
+            dispatch(setProfileId(res.data.profile._id));
+            set_profile_id(res.data.profile._id);
+          } else {
+            console.error(res.errorMessage);
+          }
+        }
+      } catch (error) {
+        console.error("Error during authentication:", error);
+      }
+    };
+
+    authenticateUser(); // Call the async function
+
+  }, [dispatch]);
 
   return (
     <>
       <Navbar />
       <h1>Home</h1>
       <p>This is the home page</p>
+      {profile_id && (
+        <ProfileComponent profile_id={profile_id} />
+      )}
     </>
   );
 }
