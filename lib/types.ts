@@ -5,7 +5,7 @@ export type Res = {
     errorMessage: string,
 }
 
-export type Attribute = 'danceability' | 'energy' | 'key' | 'loudness' | 'mode' | 'speechiness' | 'acousticness' | 'instrumentalness' | 'liveness' | 'valence' | 'tempo' | 'timeSignature' | 'popularity' | 'duration';
+export type Attribute = 'danceability' | 'energy' | 'loudness' | 'speechiness' | 'acousticness' | 'instrumentalness' | 'liveness' | 'valence' | 'tempo' | 'timeSignature' | 'popularity';
 
 export type Profile = {
     _id: string,

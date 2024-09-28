@@ -4,6 +4,10 @@
 
 import Navbar from "@/components/Navbar";
 import ProfileComponent from "@/components/ProfileComponent";
+import ProgressBar from "@/components/ProgressBar";
+//import NavigationControls from "@/components/Controls";
+import Dropdown from "@/components/Dropdown";
+
 import api from "@/lib/api";
 import { Res } from "@/lib/types";
 import { setProfileId } from "@/redux/global.reducer";
@@ -11,6 +15,8 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import 'bootstrap/dist/css/bootstrap.min.css';
+//import { Dropdown } from "react-bootstrap";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -50,6 +56,9 @@ export default function Home() {
       {profile_id && (
         <ProfileComponent profile_id={profile_id} />
       )}
+      <ProgressBar />
+      <Dropdown />
     </>
   );
 }
+
