@@ -3,7 +3,7 @@ import constants from "@/lib/constants";
 import { Profile, Res } from "@/lib/types";
 import { useEffect, useState } from "react";
 
-export async function useProfile(profile_id: string): Promise<Profile> {
+export function useProfile(profile_id: string): Profile {
     const [profile, setProfile] = useState<Profile>(constants.EMPTY_PROFILE);
 
     useEffect(() => {

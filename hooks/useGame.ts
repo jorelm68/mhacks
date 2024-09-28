@@ -3,7 +3,7 @@ import constants from "@/lib/constants";
 import { Game, Res } from "@/lib/types";
 import { useEffect, useState } from "react";
 
-export async function useGame(game_id: string): Promise<Game> {
+export function useGame(game_id: string): Game {
     const [game, setGame] = useState<Game>(constants.EMPTY_GAME);
 
     useEffect(() => {

@@ -3,7 +3,7 @@ import constants from "@/lib/constants";
 import { Track, Res } from "@/lib/types";
 import { useEffect, useState } from "react";
 
-export async function useTrack(track_id: string): Promise<Track> {
+export function useTrack(track_id: string): Track {
     const [track, setTrack] = useState<Track>(constants.EMPTY_TRACK);
 
     useEffect(() => {

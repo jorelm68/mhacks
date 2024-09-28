@@ -5,31 +5,37 @@ import TrackCard from "@/components/TrackCard";
 import { useGame } from "@/hooks/useGame";
 import { useProfile } from "@/hooks/useProfile";
 import { useTrack } from "@/hooks/useTrack";
+import { Game, Profile, Track } from "@/lib/types";
+import { useAppSelector } from "@/redux/hooks";
 
 // List of categories: Danceability, Energy, Key, Loudness, Mode, Speechiness, Acousticness, Instrumentalness, Liveness, Valence, Tempo, Time Signature, Popularity
 // Danceability, Energy, Loudness, Speechiness, Acousticness, Instrumentalness, Liveness, Valence
 
 // Danceability, Valence (happiness), Loudness, Acousticness
 
-export default function Game() {
-    const profile_id = useContext();
-    if (profile_id === null) {
-        // not authenticated
+export default function GameScreen() {
+    const profile_id = useAppSelector(state => state.global.profile_id);
+    if (!profile_id) {
         return <p>Not authenticated</p>;
     }
-    
-    const profile = useProfile(profile_id);
-
-    const game = useGame(profile.activeGame);
+    const { activeGame }: Profile = useProfile(profile_id);
+    const { profile1, profile2, profile1Path, startTrack, endTrack }: Game = useGame(activeGame);
 
     let current_track_id = null;
-    if (profile_id === game.profile1) {
-        track_id = game.profile1Path[game.profile1Path.length - 1];
+    if (profile_id === profile1) {
+        current_track_id = profile1Path[profile1Path.length - 1];
+    }
+    else if (profile_id === profile2) {
+        current_track_id = profile1Path[profile1Path.length - 1];
     }
 
-    const current_track = useTrack(current_track_id);
-    const start_track = useTrack(game.startTrack);
-    const end_track = useTrack(game.endTrack);
+    if (!current_track_id || !startTrack || !endTrack) {
+        return <p>Loading...</p>;
+    }
+
+    const current_track: Track = useTrack(current_track_id);
+    const start_track = useTrack(startTrack);
+    const end_track = useTrack(endTrack);
 
     return (
         <>
