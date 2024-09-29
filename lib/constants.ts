@@ -19,6 +19,7 @@ export default {
     EMPTY_TRACK: {
         index: '',
         name: '',
+        genres: '',
         artist: '',
         album: '',
         image: '',

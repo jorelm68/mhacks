@@ -36,6 +36,7 @@ export type Game = {
 export type Track = {
     index: string,
     name: string,
+    genres: string,
     artist: string,
     album: string,
     image: string,
