@@ -18,6 +18,7 @@ export default {
     },
     EMPTY_SONG: {
         _id: '',
+
         name: '',
         artist: '',
         album: '',
@@ -25,17 +26,16 @@ export default {
         preview: '',
         danceability: 0,
         energy: 0,
-        key: 0,
         loudness: 0,
-        mode: 0,
         speechiness: 0,
         acousticness: 0,
         instrumentalness: 0,
         liveness: 0,
         valence: 0,
         tempo: 0,
-        timeSignature: 0,
         popularity: 0,
+        albumReleaseDate: '',
+        
         createdAt: new Date(),
         updatedAt: new Date
     },
