@@ -84,15 +84,35 @@ export default function GameScreen() {
     return (
         <>
             <Navbar />
-            
+
             {game.name && <h2>{game.name}</h2>}
 
-            <TrackCard track_index={game.startTrack} />
-            <TrackCard track_index={current_track_index} />
-            <TrackCard track_index={game.endTrack} />
-            <Dropdown attribute={attribute} onChangeAttribute={handleChangeAttribute} />
-            <NavControls onIncrease={handleIncrease} onDecrease={handleDecrease} />
-            <ProgressBar/>
+            <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+            }}>
+                <div style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    maxWidth: '1200px',
+                }}>
+                    <div style={{
+                        display: 'flex',
+                        flexDirection: 'row',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                        margin: '20px',
+                    }}>
+                        <TrackCard track_index={game.startTrack} size='medium' />
+                        <TrackCard track_index={current_track_index} size='large' />
+                        <TrackCard track_index={game.endTrack} size='medium' />
+                    </div>
+                    <Dropdown attribute={attribute} onChangeAttribute={handleChangeAttribute} />
+                    <NavControls onIncrease={handleIncrease} onDecrease={handleDecrease} />
+                    <ProgressBar />
+                </div>
+            </div>
         </>
     )
 }

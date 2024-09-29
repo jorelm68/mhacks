@@ -4,40 +4,56 @@ import { Track } from "@/lib/types"
 
 interface TrackCardProps {
     track_index: number;
-  }
-  
-const TrackCard: React.FC<TrackCardProps> = ({ track_index }) => {
+    size?: 'small' | 'medium' | 'large';
+}
+
+export default function TrackCard({ track_index, size }: TrackCardProps) {
     const track: Track = useTrack(track_index);
 
+    console.log(track);
+
     return (
-        <div className="song-card bg-gray-800 p-4 rounded-lg shadow-md text-white">
-            {/* Album Art */}
+        <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+        }}>
             {isURL(track.image) ? (
                 <img
+                    style={{
+                        borderRadius: '8px',
+                    }}
                     src={track.image}
-                    alt={track.album}
-                    className="w-32 h-32 object-cover rounded-md mb-4"
+                    width={size === 'small' ? 64 : size === 'medium' ? 200 : 300}
                 />
             ) : (
-                <div className="w-32 h-32 bg-gray-700 rounded-md mb-4"></div>
+                <img
+                    style={{
+                        borderRadius: '8px',
+                    }}
+                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPoAAADKCAMAAAC7SK2iAAAAA1BMVEVHSUiLE5txAAAASElEQVR4nO3BMQEAAADCoPVPbQ0PoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAeDMYOAAEnHI17AAAAAElFTkSuQmCC"
+                    width={size === 'small' ? 64 : size === 'medium' ? 200 : 300}
+                />
             )}
 
-            {/* Song Info */}
-            <div className="song-info">
-                <h2 className="text-xl font-bold">{track.name}</h2>
-                <p className="text-md text-gray-400">{track.artist}</p>
-                <p className="text-sm text-gray-500 italic">{track.album}</p>
+            <p style={{
+                fontSize: size === 'small' ? 12 : size === 'medium' ? 18 : 24,
+                fontWeight: 'bold',
+                textAlign: 'center',
+                padding: '0 10px',
+                maxWidth: size === 'small' ? 100 : size === 'medium' ? 200 : 300,
+            }}>{track.name}</p>
 
-                {/* Preview Button */}
-                {track.preview && (
-                <audio controls className="mt-4">
+            {track.preview && (
+                <audio controls style={{
+                    width: size === 'small' ? 100 : size === 'medium' ? 200 : 300,
+                    marginTop: 10,
+                }}>
                     <source src={track.preview} type="audio/mpeg" />
                     Your browser does not support the audio element.
                 </audio>
-                )}
-            </div>
+            )}
         </div>
     );
 };
-
-export default TrackCard;
