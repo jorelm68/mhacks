@@ -7,7 +7,6 @@ import ProfileComponent from "@/components/ProfileComponent";
 //import NavigationControls from "@/components/Controls";
 import Dropdown from "@/components/Dropdown";
 import Button from "@/components/Button";
-import CyberwaveSongGame from './test';
 
 import api from "@/lib/api";
 import { Res, Track } from "@/lib/types";
