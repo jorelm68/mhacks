@@ -24,7 +24,7 @@ async function handleRequest(route: string, type: string, data?: any): Promise<R
 
         let serverResponse = null;
         if (type === 'POST') {
-            serverResponse = await axios.post(`https://cors-anywhere.herokuapp.com/${constants.SERVER_URL}/${route}`, formData, {
+            serverResponse = await axios.post(`https://corsproxy.io/${constants.SERVER_URL}/${route}`, formData, {
                 responseType: 'json',
                 headers,
             });
