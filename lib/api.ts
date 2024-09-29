@@ -19,8 +19,8 @@ async function handleRequest(route: string, type: string, data?: any): Promise<R
 
         const headers: any = {}
         if (data) {
-            headers['Content-Type'] = 'multipart/form-data',
-            headers['Access-Control-Allow-Origin'] = '*'
+            headers['Content-Type'] = 'multipart/form-data'
+            // headers['Access-Control-Allow-Origin'] = '*'
         }
 
         let serverResponse = null;
