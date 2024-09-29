@@ -1,6 +1,7 @@
 // Screen for when you are actively in a game
 // this is the bulk of the project
 
+import Navbar from "@/components/Navbar";
 import TrackCard from "@/components/TrackCard";
 import WaitingForGame from "@/components/WaitingForGame";
 import { useGame } from "@/hooks/useGame";
@@ -61,12 +62,14 @@ export default function GameScreen() {
 
     const handleMove = async () => {
         const response: Res = await api.game.move(game._id, profile_id, 'Danceability', 1);
-    
+
         console.log(response.data);
-      }
+    }
 
     return (
         <>
+            <Navbar />
+            
             {game.name && <h2>{game.name}</h2>}
 
             <TrackCard track_id={game.startTrack} />
