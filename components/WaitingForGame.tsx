@@ -10,11 +10,14 @@ export default function WaitingForGame({ game }: WaitingForGameProps) {
 
 
     return (
-        <div>
-            <Text>Waiting for game</Text>
-            {game.name && <Text>{game.name}</Text>}
-            <Text>Player 1: {game.profile1 ? game.profile1 : 'Searching...'}</Text>
-            <Text>Player 2: {game.profile2 ? game.profile2 : 'Searching...'}</Text>
+        <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            width: '100%',
+        }}>
+            <Text>Waiting for an opponent...</Text>
         </div>
     )
 }

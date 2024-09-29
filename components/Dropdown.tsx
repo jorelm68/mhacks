@@ -13,9 +13,7 @@ export default function Dropdown({ attribute, onChangeAttribute }: { attribute: 
 
   return (
     <div>
-      <Text>Select a Metric</Text>
       <select onChange={handleMetricChange} className="form-select" aria-label="Select Metric">
-        <option value="" disabled selected>Select a song</option>
         <option value="Popularity">Popularity</option>
         <option value="Danceability">Danceability</option>
         <option value="Energy">Energy</option>
