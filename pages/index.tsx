@@ -7,6 +7,7 @@ import ProfileComponent from "@/components/ProfileComponent";
 import ProgressBar from "@/components/ProgressBar";
 //import NavigationControls from "@/components/Controls";
 import Dropdown from "@/components/Dropdown";
+import Button from "@/components/Button";
 
 import api from "@/lib/api";
 import { Res } from "@/lib/types";
@@ -16,6 +17,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import NavControls from "@/components/NavControls";
 //import { Dropdown } from "react-bootstrap";
 
 export default function Home() {
