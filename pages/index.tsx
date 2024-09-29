@@ -53,15 +53,16 @@ export default function Home() {
 
   }, [dispatch]);
 
-  const [name, setName] = useState('gamey');
+  const [createGameName, setCreateGameName] = useState('gamey');
+  const [joinGameName, setJoinGameName] = useState('gamey');
 
   const handleCreateGame = async () => {
-    if (!name || !profile_id) {
+    if (!createGameName || !profile_id) {
       return;
     }
     setLoading(true);
 
-    const res: Res = await api.game.create(name, profile_id);
+    const res: Res = await api.game.create(createGameName, profile_id);
 
     if (res.success) {
       router.push(`/game`);
@@ -72,37 +73,51 @@ export default function Home() {
     setLoading(false);
   };
 
-  const song: Song = useSong('');
+  const handleJoinGame = async () => {
+    if (!createGameName || !profile_id) {
+      return;
+    }
+    setLoading(true);
 
-  
+    const res: Res = await api.profile.joinGame(profile_id, createGameName);
+
+    if (res.success) {
+      router.push(`/game`);
+    } else {
+      console.error(res.errorMessage);
+    }
+
+    setLoading(false);
+  }
+
+
 
   return (
     <>
       <Navbar />
-      <h1>Home</h1>
-      <p>This is the home page</p>
-      {profile_id && (
-        <ProfileComponent profile_id={profile_id} />
-      )}
-
       {!canCreateGame && <p>You cannot create a new game</p>}
-      {canCreateGame && (
-        <div>
-          <input type="text" placeholder="Game Name" value={name} onChange={(e) => setName(e.target.value)} />
-          <button onClick={handleCreateGame}>Create Game</button>
+      {profile_id && canCreateGame && (
+        <div style={{
+          display: 'flex',
+          flexDirection: 'column',
+        }}>
+          <div style={{
+            display: 'flex',
+            flexDirection: 'row',
+          }}>
+            <input type="text" placeholder="Create a Game" value={createGameName} onChange={(e) => setCreateGameName(e.target.value)} />
+            <button onClick={handleCreateGame}>Create Game</button>
+          </div>
+
+          <div style={{
+            display: 'flex',
+            flexDirection: 'row',
+          }}>
+            <input type="text" placeholder="Join a Game" value={joinGameName} onChange={(e) => setJoinGameName(e.target.value)} />
+            <button onClick={handleJoinGame}>Join a Game</button>
+          </div>
         </div>
       )}
-
-      {song && (
-        <div>
-          <h2>{song.name}</h2>
-          <p>{song.artist}</p>
-          <p>{song.album}</p>
-          <img src={song.image} alt={song.name} />
-        </div>
-      )}
-
-      {/* <button onClick={handleMove} className="btn btn-primary">Move</button> */}
     </>
   );
 }

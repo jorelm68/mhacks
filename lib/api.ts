@@ -59,6 +59,7 @@ export default {
         read: async (profile_id: string): Promise<Res> => await handleRequest('api/profile/read', 'POST', { profile_id }),
         factoryReset: async (): Promise<Res> => await handleRequest('api/profile/factoryReset', 'POST', {}),
         leaveGame: async (profile_id: string): Promise<Res> => await handleRequest('api/profile/leaveGame', 'POST', { profile_id }),
+        joinGame: async (profile_id: string, name: string): Promise<Res> => await handleRequest('api/profile/joinGame', 'POST', { profile_id, name }),
     },
     game: {
         create: async (name: string, profile: string): Promise<Res> => await handleRequest('api/game/create', 'POST', { name, profile }),
