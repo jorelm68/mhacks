@@ -19,12 +19,13 @@ async function handleRequest(route: string, type: string, data?: any): Promise<R
 
         const headers: any = {}
         if (data) {
-            headers['Content-Type'] = 'multipart/form-data'
+            headers['Content-Type'] = 'multipart/form-data',
+            headers['Access-Control-Allow-Origin'] = '*'
         }
 
         let serverResponse = null;
         if (type === 'POST') {
-            serverResponse = await axios.post(`https://corsproxy.io/${constants.SERVER_URL}/${route}`, formData, {
+            serverResponse = await axios.post(`${constants.SERVER_URL}/${route}`, formData, {
                 responseType: 'json',
                 headers,
             });
