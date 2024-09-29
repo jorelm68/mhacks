@@ -20,7 +20,6 @@ export function useSong(track_id: string): Song {
                 const res: Res = await api.track.read(track_id);
                 const res2: Res = await api.spotify.getTrack(track_id, access_token);
 
-                console.log(res, res2);
                 
                 if (res.success && res2.success) {
                     const song = {
