@@ -1,4 +1,5 @@
 import { Game } from "@/lib/types";
+import TrackCard from "./TrackCard";
 
 interface WaitingForGameProps {
     game: Game;

@@ -8,6 +8,8 @@ interface TrackProps {
 export default function TrackCard({ track_id }: TrackProps) {
     const song: Song = useSong(track_id);
 
+    console.log('song', song);
+
     return (
         <div >
             <img src={song.image} alt={song.name} />

@@ -12,7 +12,7 @@ export function useTrack(track_id: string): Track {
                 return;
             }
             try {
-                const res: Res = await api.track.read('11dFghVXANMlKmJXsNCbNl');
+                const res: Res = await api.track.read(track_id);
                 if (res.success) {
                     setTrack(res.data.track as Track);
                 } else {
