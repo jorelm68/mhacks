@@ -68,7 +68,7 @@ export default {
     SPOTIFY_CONFIG: {
         clientId: "f7c02a3be86b4a47a0779eec1eac1281",
         clientSecret: "31f9ed5270b148edadd15b5d6efea510",
-        redirectUri: 'http://localhost:3000/callback', // Replace with your redirect URI
+        redirectUri: 'https://mhacks-beta.vercel.app/callback', // Replace with your redirect URI
         scope: 'user-read-currently-playing user-read-playback-state',
     }
 } 
