@@ -61,5 +61,7 @@ export default {
         clientSecret: "31f9ed5270b148edadd15b5d6efea510",
         redirectUri: `http://localhost:3000/callback`, // Replace with your redirect URI
         scope: 'user-read-currently-playing user-read-playback-state',
-    }
+    },
+
+    BRIGHT_PINK: '#FF00BC',
 } 

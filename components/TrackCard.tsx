@@ -2,6 +2,7 @@ import { useTrack } from "@/hooks/useTrack";
 import { isURL } from "@/lib/helper";
 import { Track } from "@/lib/types"
 import { useEffect, useState } from "react";
+import Text from "./Text";
 
 interface TrackCardProps {
     track_index: number;
@@ -52,13 +53,12 @@ export default function TrackCard({ track_index, size }: TrackCardProps) {
                 />
             )}
 
-            <p style={{
+            <Text style={{
                 fontSize: size === 'small' ? 12 : size === 'medium' ? 18 : 24,
-                fontWeight: 'bold',
                 textAlign: 'center',
                 padding: '0 10px',
                 maxWidth: size === 'small' ? 100 : size === 'medium' ? 200 : 300,
-            }}>{name}</p>
+            }}>{name}</Text>
 
 
             {!hideMusic && preview && (

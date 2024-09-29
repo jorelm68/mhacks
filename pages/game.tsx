@@ -15,6 +15,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { ProgressBar } from "react-bootstrap";
 import Dropdown from "@/components/Dropdown";
+import Backdrop from "@/components/Backdrop";
 
 // List of categories: Danceability, Energy, Key, Loudness, Mode, Speechiness, Acousticness, Instrumentalness, Liveness, Valence, Tempo, Time Signature, Popularity
 // Danceability, Energy, Loudness, Speechiness, Acousticness, Instrumentalness, Liveness, Valence
@@ -79,6 +80,7 @@ export default function GameScreen() {
 
     return (
         <>
+        <Backdrop />
             <Navbar />
 
             {game.name && <h2>{game.name}</h2>}
