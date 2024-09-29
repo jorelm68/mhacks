@@ -53,8 +53,8 @@ export default {
 
     HOSTED_AT: 'https://mhacks-beta.vercel.app',
 
-    SERVER_URL: 'https://beck-ethan-mcintyres-projects.vercel.app',
-    // SERVER_URL: 'http://localhost:4000',
+    // SERVER_URL: 'https://beck-ethan-mcintyres-projects.vercel.app',
+    SERVER_URL: 'http://localhost:4000',
 
     SPOTIFY_CONFIG: {
         clientId: "f7c02a3be86b4a47a0779eec1eac1281",
