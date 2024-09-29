@@ -19,6 +19,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavControls from "@/components/NavControls";
+import CheckGame from "@/components/CheckGame";
 //import { Dropdown } from "react-bootstrap";
 
 export default function Home() {
@@ -93,6 +94,7 @@ export default function Home() {
 
   return (
     <>
+      <CheckGame />
       <Navbar />
       {!canCreateGame && <p>You cannot create a new game</p>}
       {profile_id && canCreateGame && (
