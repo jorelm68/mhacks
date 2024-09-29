@@ -35,26 +35,7 @@ export type Game = {
 
 export type Track = {
     _id: string,
-
-    name: string,
-    artist: string,
-    albumName: string,
-    albumArt: string,
-    danceability: number,
-    energy: number,
-    key: number,
-    loudness: number,
-    mode: number,
-    speechiness: number,
-    acousticness: number,
-    instrumentalness: number,
-    liveness: number,
-    valence: number,
-    tempo: number,
-    timeSignature: number,
-    popularity: number,
-    duration: number,
-
+    index: number,
     createdAt: Date,
     updatedAt: Date,
 }

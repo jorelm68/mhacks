@@ -20,10 +20,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function Home() {
   const router = useRouter();
+  const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
   const [profile_id, set_profile_id] = useState<string | null>(null);
 
-  // Run upon mounting
   useEffect(() => {
     const authenticateUser = async () => {
       try {
@@ -49,8 +49,23 @@ export default function Home() {
 
   }, [dispatch]);
 
-  const goToCreateGame = () => {
-    router.push('/create_game');
+  const [name, setName] = useState('gamey');
+
+  const handleCreateGame = async () => {
+    if (!name || !profile_id) {
+      return;
+    }
+    setLoading(true);
+
+    const res: Res = await api.game.create(name, profile_id);
+
+    if (res.success) {
+      router.push(`/game`);
+    } else {
+      console.error(res.errorMessage);
+    }
+
+    setLoading(false);
   }
 
   return (
@@ -64,7 +79,13 @@ export default function Home() {
       <ProgressBar />
       <Dropdown />
 
-      <button onClick={goToCreateGame}>Create a new game</button>
+      {loading && <p>Loading...</p>}
+      {!loading && (
+        <div>
+          <input type="text" placeholder="Game Name" value={name} onChange={(e) => setName(e.target.value)} />
+          <button onClick={handleCreateGame}>Create Game</button>
+        </div>
+      )}
     </>
   );
 }

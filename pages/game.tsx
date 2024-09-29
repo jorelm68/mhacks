@@ -60,9 +60,6 @@ export default function GameScreen() {
 
     return (
         <>
-            <h1>Game</h1>
-            <p>This is the game page</p>
-
             {game.name && <h2>{game.name}</h2>}
 
             <TrackCard track={current_track} />
