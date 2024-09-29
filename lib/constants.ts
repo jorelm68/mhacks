@@ -62,6 +62,8 @@ export default {
         errorMessage: 'This is the initial response message',
     },
 
+    HOSTED_AT: 'https://mhacks-18opcn8ba-ethan-mcintyres-projects.vercel.app',
+
     SERVER_URL: 'https://beck-ethan-mcintyres-projects.vercel.app',
     // SERVER_URL: 'http://localhost:4000',
 
