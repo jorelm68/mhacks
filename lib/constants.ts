@@ -52,17 +52,10 @@ export default {
         errorMessage: 'This is the initial response message',
     },
 
-    HOSTED_AT: 'https://mhacks-beta.vercel.app',
+    HOSTED_AT: 'https://mhacks-1fa15c2d64bb.herokuapp.com',
 
     SERVER_URL: 'https://beck-six.vercel.app',
     // SERVER_URL: 'http://localhost:4000',
-
-    SPOTIFY_CONFIG: {
-        clientId: "f7c02a3be86b4a47a0779eec1eac1281",
-        clientSecret: "31f9ed5270b148edadd15b5d6efea510",
-        redirectUri: `https://mhacks4.vercel.app/callback`, // Replace with your redirect URI
-        scope: 'user-read-currently-playing user-read-playback-state',
-    },
 
     BRIGHT_PINK: '#FF00BC',
 } 

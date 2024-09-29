@@ -1,16 +1,33 @@
+import api from "@/lib/api";
 import constants from "@/lib/constants";
+import { Res } from "@/lib/types";
+import { setProfileId } from "@/redux/global.reducer";
 import { useAppSelector } from "@/redux/hooks"
-import { useEffect } from "react";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 
 export default function LoggedOutNav() {
-    const handleLogin = () => {
-        const client_id = constants.SPOTIFY_CONFIG.clientId;
-        const redirect_uri = constants.SPOTIFY_CONFIG.redirectUri;
-        const scopes = constants.SPOTIFY_CONFIG.scope;
-        window.location.href = `https://accounts.spotify.com/authorize?client_id=${client_id}&response_type=code&redirect_uri=${redirect_uri}&scope=${scopes}`;
-    };
+    const profile_id = useAppSelector(state => state.global.profile_id);
+    const [username, setUsername] = useState<string | null>(null);
+    const router = useRouter();
+    const dispatch = useDispatch();
 
     return (
-        <button onClick={handleLogin}>Log in with Spotify</button>
+        <div>
+            <input type="text" placeholder="Enter your username" onChange={(e) => setUsername(e.target.value)} />
+            <button onClick={async () => { 
+                if (!username) {
+                    return;
+                }
+                const res: Res = await api.profile.authenticate(username);
+
+                if (res.success) {
+                    dispatch(setProfileId(res.data.profile._id));
+                } else {
+                    console.error(res.errorMessage);
+                }
+             }}>Authenticate</button>
+        </div>
     )
 }

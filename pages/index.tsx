@@ -17,38 +17,13 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import CheckGame from "@/components/CheckGame";
+import { useAppSelector } from "@/redux/hooks";
 //import { Dropdown } from "react-bootstrap";
 
 export default function Home() {
+  const profile_id = useAppSelector(state => state.global.profile_id);
   const router = useRouter();
   const [canCreateGame, setLoading] = useState(true);
-  const dispatch = useDispatch();
-  const [profile_id, set_profile_id] = useState<string | null>(null);
-
-  useEffect(() => {
-    const authenticateUser = async () => {
-      try {
-        const username: string | null = localStorage.getItem('username');
-
-        if (username) {
-          // Authenticate
-          const res: Res = await api.profile.authenticate(username); // Make sure to await the result
-
-          if (res.success) {
-            dispatch(setProfileId(res.data.profile._id));
-            set_profile_id(res.data.profile._id);
-          } else {
-            console.error(res.errorMessage);
-          }
-        }
-      } catch (error) {
-        console.error("Error during authentication:", error);
-      }
-    };
-
-    authenticateUser(); // Call the async function
-
-  }, [dispatch]);
 
   const [createGameName, setCreateGameName] = useState('gamey');
   const [joinGameName, setJoinGameName] = useState('gamey');
