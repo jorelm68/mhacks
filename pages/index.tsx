@@ -74,11 +74,7 @@ export default function Home() {
 
   const song: Song = useSong('');
 
-  const handleMove = async () => {
-    const response: Res = await api.game.move('Game-66f89c46d09d500678c2843f', 'Profile-66f85c2050bc91e118711bbf', 'Danceability', 1);
-
-    console.log(response.data);
-  }
+  
 
   return (
     <>

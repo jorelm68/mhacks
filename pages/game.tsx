@@ -6,7 +6,8 @@ import WaitingForGame from "@/components/WaitingForGame";
 import { useGame } from "@/hooks/useGame";
 import { useProfile } from "@/hooks/useProfile";
 import { useTrack } from "@/hooks/useTrack";
-import { Game, Profile, Track } from "@/lib/types";
+import api from "@/lib/api";
+import { Game, Profile, Res, Track } from "@/lib/types";
 import { useAppSelector } from "@/redux/hooks";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -54,15 +55,25 @@ export default function GameScreen() {
         return <p>Loading...</p>;
     }
 
-    if (!game.profile1 || !game.profile2) {
-        return <WaitingForGame game={game} />;
-    }
+    // if (!game.profile1 || !game.profile2) {
+    //     return <WaitingForGame game={game} />;
+    // }
+
+    const handleMove = async () => {
+        const response: Res = await api.game.move(game._id, profile_id, 'Danceability', 1);
+    
+        console.log(response.data);
+      }
 
     return (
         <>
             {game.name && <h2>{game.name}</h2>}
 
+            <TrackCard track_id={game.startTrack} />
             <TrackCard track_id={current_track_id} />
+            <TrackCard track_id={game.endTrack} />
+
+            <button onClick={handleMove}>Move</button>
         </>
     )
 }
