@@ -1,11 +1,13 @@
 import { useSong } from "@/hooks/useSong";
 import { Song } from "@/lib/types"
 
-interface SongCardProps {
-    song: Song;
+interface TrackCardProps {
+    track_id: string;
   }
   
-const SongCard: React.FC<SongCardProps> = ({ song }) => {
+const TrackCard: React.FC<TrackCardProps> = ({ track_id }) => {
+    const song: Song = useSong(track_id);
+
     return (
         <div className="song-card bg-gray-800 p-4 rounded-lg shadow-md text-white">
             {/* Album Art */}
@@ -33,4 +35,4 @@ const SongCard: React.FC<SongCardProps> = ({ song }) => {
     );
 };
 
-export default SongCard;
+export default TrackCard;

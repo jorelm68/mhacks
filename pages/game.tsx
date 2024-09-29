@@ -51,6 +51,8 @@ export default function GameScreen() {
     const start_track = useTrack(game.startTrack);
     const end_track = useTrack(game.endTrack);
 
+    console.log(!current_track_id, !game.startTrack, !game.endTrack, loading);
+    console.log(game);
     if (!current_track_id || !game.startTrack || !game.endTrack || loading) {
         return <p>Loading...</p>;
     }
