@@ -8,6 +8,9 @@ export function useGame(game_id: string): Game {
 
     useEffect(() => {
         const fetchGame = async () => {
+            if (!game_id) {
+                return;
+            }
             try {
                 const res: Res = await api.game.read(game_id);
 

@@ -8,6 +8,9 @@ export function useTrack(track_id: string): Track {
 
     useEffect(() => {
         const fetchTrack = async () => {
+            if (!track_id) {
+                return;
+            }
             try {
                 const res: Res = await api.track.read(track_id);
                 if (res.success) {

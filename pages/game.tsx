@@ -37,7 +37,7 @@ export default function GameScreen() {
     const { activeGame }: Profile = useProfile(profile_id);
     const { profile1, profile2, profile1Path, startTrack, endTrack }: Game = useGame(activeGame);
 
-    let current_track_id = null;
+    let current_track_id = '';
     if (profile_id === profile1) {
         current_track_id = profile1Path[profile1Path.length - 1];
     }
@@ -45,13 +45,13 @@ export default function GameScreen() {
         current_track_id = profile1Path[profile1Path.length - 1];
     }
 
-    if (!current_track_id || !startTrack || !endTrack || loading) {
-        return <p>Loading...</p>;
-    }
-
     const current_track: Track = useTrack(current_track_id);
     const start_track = useTrack(startTrack);
     const end_track = useTrack(endTrack);
+
+    if (!current_track_id || !startTrack || !endTrack || loading) {
+        return <p>Loading...</p>;
+    }
 
     return (
         <>
