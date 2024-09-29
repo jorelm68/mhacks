@@ -35,7 +35,7 @@ export default function GameScreen() {
         };
     }, [])
     const { activeGame }: Profile = useProfile(profile_id);
-    const { profile1, profile2, profile1Path, startTrack, endTrack }: Game = useGame(activeGame);
+    const { profile1, profile2, profile1Path, startTrack, endTrack, name }: Game = useGame(activeGame);
 
     let current_track_id = '';
     if (profile_id === profile1) {
@@ -57,6 +57,8 @@ export default function GameScreen() {
         <>
             <h1>Game</h1>
             <p>This is the game page</p>
+
+            {name && <h2>{name}</h2>}
 
             <TrackCard track={current_track} />
         </>

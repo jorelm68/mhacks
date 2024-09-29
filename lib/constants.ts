@@ -1,6 +1,8 @@
 export default {
     EMPTY_GAME: {
         _id: '',
+
+        name: '',
         profile1: '',
         profile2: '',
         winner: '',

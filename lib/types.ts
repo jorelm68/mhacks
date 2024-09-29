@@ -17,6 +17,7 @@ export type Profile = {
 export type Game = {
     _id: string,
 
+    name: string,
     profile1: string,
     profile2: string,
     winner: string,
