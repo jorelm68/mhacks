@@ -50,12 +50,8 @@ export default function GameScreen() {
         current_track_index = game.profile1Path[game.profile1Path.length - 1];
     }
     else if (profile_id === game.profile2) {
-        current_track_index = game.profile1Path[game.profile1Path.length - 1];
+        current_track_index = game.profile2Path[game.profile2Path.length - 1];
     }
-
-    const current_track: Track = useTrack(current_track_index);
-    const start_track = useTrack(game.startTrack);
-    const end_track = useTrack(game.endTrack);
 
     if (!current_track_index || !game.startTrack || !game.endTrack || loading) {
         return <p>Loading...</p>;
