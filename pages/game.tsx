@@ -62,7 +62,7 @@ export default function GameScreen() {
         <>
             {game.name && <h2>{game.name}</h2>}
 
-            <TrackCard track={current_track} />
+            <TrackCard track_id={current_track_id} />
         </>
     )
 }
