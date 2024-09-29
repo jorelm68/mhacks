@@ -3,30 +3,29 @@ import constants from "@/lib/constants";
 import { Track, Res } from "@/lib/types";
 import { useEffect, useState } from "react";
 
-export function useTrack(track_id: string): Track {
+export function useTrack(index: number): Track {
     const [track, setTrack] = useState<Track>(constants.EMPTY_TRACK);
 
     useEffect(() => {
         const fetchTrack = async () => {
-            if (!track_id) {
-                return;
-            }
             try {
-                const res: Res = await api.track.read(track_id);
+                const res: Res = await api.spotify.getTrack(index);
+
+                
                 if (res.success) {
                     setTrack(res.data.track as Track);
                 } else {
                     console.error(res.errorMessage);
                 }
             } catch (error) {
-                console.error("Failed to fetch track:", error);
+                console.error("Failed to fetch song:", error);
             }
         };
 
-        // Fetch the track initially
+        // Fetch the song initially
         fetchTrack();
 
-        // Set up interval to refresh track data every 5 seconds
+        // Set up interval to refresh song data every 5 seconds
         const interval = setInterval(() => {
             fetchTrack();
         }, 5000);
@@ -34,7 +33,7 @@ export function useTrack(track_id: string): Track {
         return () => {
             clearInterval(interval);
         };
-    }, [track_id]);
+    }, [index]);
 
     return track;
 }

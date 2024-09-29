@@ -11,7 +11,7 @@ import Button from "@/components/Button";
 import CyberwaveSongGame from './test';
 
 import api from "@/lib/api";
-import { Res, Song } from "@/lib/types";
+import { Res, Track } from "@/lib/types";
 import { setProfileId } from "@/redux/global.reducer";
 import axios from "axios";
 import { useRouter } from "next/router";
@@ -19,7 +19,6 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavControls from "@/components/NavControls";
-import { useSong } from "@/hooks/useSong";
 //import { Dropdown } from "react-bootstrap";
 
 export default function Home() {
@@ -79,7 +78,7 @@ export default function Home() {
     }
     setLoading(true);
 
-    const res: Res = await api.profile.joinGame(profile_id, createGameName);
+    const res: Res = await api.profile.joinGame(profile_id, joinGameName);
 
     if (res.success) {
       router.push(`/game`);

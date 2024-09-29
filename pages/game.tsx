@@ -40,19 +40,19 @@ export default function GameScreen() {
     const { activeGame }: Profile = useProfile(profile_id);
     const game: Game = useGame(activeGame);
 
-    let current_track_id = '';
+    let current_track_index = 0;
     if (profile_id === game.profile1) {
-        current_track_id = game.profile1Path[game.profile1Path.length - 1];
+        current_track_index = game.profile1Path[game.profile1Path.length - 1];
     }
     else if (profile_id === game.profile2) {
-        current_track_id = game.profile1Path[game.profile1Path.length - 1];
+        current_track_index = game.profile1Path[game.profile1Path.length - 1];
     }
 
-    const current_track: Track = useTrack(current_track_id);
+    const current_track: Track = useTrack(current_track_index);
     const start_track = useTrack(game.startTrack);
     const end_track = useTrack(game.endTrack);
 
-    if (!current_track_id || !game.startTrack || !game.endTrack || loading) {
+    if (!current_track_index || !game.startTrack || !game.endTrack || loading) {
         return <p>Loading...</p>;
     }
 
@@ -72,9 +72,9 @@ export default function GameScreen() {
             
             {game.name && <h2>{game.name}</h2>}
 
-            <TrackCard track_id={game.startTrack} />
-            <TrackCard track_id={current_track_id} />
-            <TrackCard track_id={game.endTrack} />
+            <TrackCard track_index={game.startTrack} />
+            <TrackCard track_index={current_track_index} />
+            <TrackCard track_index={game.endTrack} />
 
             <button onClick={handleMove}>Move</button>
         </>
