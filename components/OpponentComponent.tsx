@@ -35,17 +35,17 @@ export default function OpponentComponent({ game, profile_id }: { game: Game, pr
     return (
         <div style={{
             display: 'flex',
-            flexDirection: 'column',
+            flexDirection: 'row',
             justifyContent: 'center',
             alignItems: 'center',
-            width: '100%',
+            width: '512px',
         }}>
             <Text>Opponent: {profile.username}</Text>
             <TrackCard track_index={game[`profile${number}Path`][game[`profile${number}Path`].length - 1]} size="medium" />
-            <ProgressBar now={progress} label={`${Math.round((progress / 100) * 100)}%`} style={{
+            {/* <ProgressBar now={progress} label={`${Math.round((progress / 100) * 100)}%`} style={{
                 width: '256px',
                 marginTop: '1rem',
-            }} />
+            }} /> */}
         </div>
     );
 }

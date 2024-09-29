@@ -102,13 +102,15 @@ export default function GameScreen() {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
+                flexDirection: 'column',
             }}>
                 <div style={{
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
                     maxWidth: '1200px',
-                    minWidth: '1024px',
+                    minWidth: '800px',
+                    height: '512px',
                 }}>
                     <div style={{
                         display: 'flex',
@@ -151,19 +153,16 @@ export default function GameScreen() {
                             More <ChevronRight />
                         </button>
                     </div>
-                    <ProgressBar style={{
+                    {/* <ProgressBar style={{
                         width: '512px',
-                    }} now={progress} label={`${Math.round(progress * 100) / 100}%`} />
+                    }} now={progress} label={`${Math.round(progress * 100) / 100}%`} /> */}
                 </div>
 
                 {game.profile1 && game.profile2 ? (
                     <div style={{
                         display: 'flex',
-                        flexDirection: 'column',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        height: '256px',
-                        width: '100%',
                     }}>
                         <OpponentComponent game={game} profile_id={game.profile1 === profile_id ? game.profile2 : game.profile1} />
                     </div>

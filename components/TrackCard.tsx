@@ -65,6 +65,7 @@ export default function TrackCard({ track_index, size }: TrackCardProps) {
                 <audio controls style={{
                     width: size === 'small' ? 100 : size === 'medium' ? 200 : 300,
                     marginTop: 10,
+                    minWidth: 200,
                 }}>
                     <source src={preview} type="audio/mpeg" />
                     Your browser does not support the audio element.

@@ -54,8 +54,8 @@ export default {
 
     HOSTED_AT: 'https://mhacks-1fa15c2d64bb.herokuapp.com',
 
-    SERVER_URL: 'https://beck-six.vercel.app',
-    // SERVER_URL: 'http://localhost:4000',
+    // SERVER_URL: 'https://beck-six.vercel.app',
+    SERVER_URL: 'http://localhost:4000',
 
     BRIGHT_PINK: '#FF00BC',
 } 
