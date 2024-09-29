@@ -1,13 +1,9 @@
-import ArrowIcon from "@/components/ArrowIcon";
-import Navbar from "@/components/Navbar";
+import React, { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import Button from '@/components/Button'
+import Dropdown from '@/components/Dropdown'
+import NavControls from '@/components/NavControls'
+import ProgressBar from '@/components/ProgressBar'
+import TrackCard from '@/components/TrackCard'
+import { Track } from "@/lib/types"
 
-export default function Test() {
-    return (
-        <div>
-            <Navbar />
-            <ArrowIcon />
-            <h1>Test</h1>
-            <p>This is a test page</p>
-        </div>
-    )
-}

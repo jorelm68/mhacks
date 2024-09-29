@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const Dropdown = () => {
     return (
       <div className="container mt-4">
-        <h3>Select a Song</h3>
+        <h3>Select a Metric</h3>
         <select className="form-select" aria-label="Select Metric">
           <option value="" disabled selected>Select a song</option>
           <option value="song1">Popularity</option>
