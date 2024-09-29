@@ -54,7 +54,7 @@ export default {
 
     HOSTED_AT: 'https://mhacks-beta.vercel.app',
 
-    // SERVER_URL: 'https://beck-ethan-mcintyres-projects.vercel.app',
+    // SERVER_URL: 'https://beck-six.vercel.app',
     SERVER_URL: 'http://localhost:4000',
 
     SPOTIFY_CONFIG: {
