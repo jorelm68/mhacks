@@ -39,3 +39,27 @@ export type Track = {
     createdAt: Date,
     updatedAt: Date,
 }
+
+export type Song = {
+    _id: string,
+    
+    name: string,
+    artist: string,
+    album: string,
+    image: string,
+    preview: string,
+    popularity: number,
+    danceability: number,
+    energy: number,
+    loudness: number,
+    speechiness: number,
+    acousticness: number,
+    instrumentalness: number,
+    liveness: number,
+    tempo: number,
+    valence: number,
+    albumReleaseDate: string,
+
+    createdAt: Date,
+    updatedAt: Date,
+}

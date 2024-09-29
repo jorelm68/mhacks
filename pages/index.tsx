@@ -10,7 +10,7 @@ import Dropdown from "@/components/Dropdown";
 import Button from "@/components/Button";
 
 import api from "@/lib/api";
-import { Res } from "@/lib/types";
+import { Res, Song } from "@/lib/types";
 import { setProfileId } from "@/redux/global.reducer";
 import axios from "axios";
 import { useRouter } from "next/router";
@@ -18,11 +18,12 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavControls from "@/components/NavControls";
+import { useSong } from "@/hooks/useSong";
 //import { Dropdown } from "react-bootstrap";
 
 export default function Home() {
   const router = useRouter();
-  const [loading, setLoading] = useState(true);
+  const [canCreateGame, setLoading] = useState(true);
   const dispatch = useDispatch();
   const [profile_id, set_profile_id] = useState<string | null>(null);
 
@@ -68,7 +69,9 @@ export default function Home() {
     }
 
     setLoading(false);
-  }
+  };
+
+  const song: Song = useSong('11dFghVXANMlKmJXsNCbNl');
 
   return (
     <>
@@ -81,11 +84,20 @@ export default function Home() {
       <ProgressBar />
       <Dropdown />
 
-      {loading && <p>Loading...</p>}
-      {!loading && (
+      {!canCreateGame && <p>You cannot create a new game</p>}
+      {canCreateGame && (
         <div>
           <input type="text" placeholder="Game Name" value={name} onChange={(e) => setName(e.target.value)} />
           <button onClick={handleCreateGame}>Create Game</button>
+        </div>
+      )}
+
+      {song && (
+        <div>
+          <h2>{song.name}</h2>
+          <p>{song.artist}</p>
+          <p>{song.album}</p>
+          <img src={song.image} alt={song.name} />
         </div>
       )}
     </>
