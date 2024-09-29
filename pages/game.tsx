@@ -29,6 +29,7 @@ export default function GameScreen() {
     const profile_id = useAppSelector(state => state.global.profile_id);
     const [loading, setLoading] = useState(true);
     const [attribute, setAttribute] = useState<Attribute>('Danceability');
+    const [progress, setProgress] = useState(0);
     // If the user is not logged in then send them to the home page
     useEffect(() => {
         const interval = setInterval(() => {
@@ -66,11 +67,21 @@ export default function GameScreen() {
     const handleIncrease = async () => {
         const response: Res = await api.game.move(game._id, profile_id, attribute, 1);
 
+        const res: Res = await api.spotify.getProgress(game._id, profile_id);
+        if (res.success) {
+            setProgress(res.data.progress);
+        }
+
         console.log(response.data);
     }
 
     const handleDecrease = async () => {
         const response: Res = await api.game.move(game._id, profile_id, attribute, 0);
+
+        const res: Res = await api.spotify.getProgress(game._id, profile_id);
+        if (res.success) {
+            setProgress(res.data.progress);
+        }
 
         console.log(response.data);
     }
@@ -109,7 +120,7 @@ export default function GameScreen() {
                     </div>
                     <Dropdown attribute={attribute} onChangeAttribute={handleChangeAttribute} />
                     <NavControls onIncrease={handleIncrease} onDecrease={handleDecrease} />
-                    <ProgressBar />
+                    <ProgressBar now={progress}  label={`${progress}%`} />
                 </div>
             </div>
         </>
