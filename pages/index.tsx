@@ -79,7 +79,7 @@ export default function Home() {
     }
     setLoading(true);
 
-    const res: Res = await api.profile.joinGame(profile_id, createGameName);
+    const res: Res = await api.profile.joinGame(profile_id, joinGameName);
 
     if (res.success) {
       router.push(`/game`);
