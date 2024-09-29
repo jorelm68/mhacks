@@ -10,7 +10,7 @@ export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
     const loadFonts = async () => {
       const link = document.createElement('link');
-      link.href = 'https://fonts.googleapis.com/css2?family=Rubik+Dirt&display=swap';
+      link.href = 'https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap';
       link.rel = 'stylesheet';
       document.head.appendChild(link);
     }

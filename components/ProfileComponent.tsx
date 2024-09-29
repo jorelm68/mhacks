@@ -1,6 +1,7 @@
 import { useProfile } from "@/hooks/useProfile";
 import { Profile } from "@/lib/types";
 import { useRouter } from "next/router";
+import Text from "./Text";
 
 interface ProfileProps {
     profile_id: string;
@@ -16,10 +17,10 @@ export default function ProfileComponent({ profile_id }: ProfileProps) {
 
     return (
         <div>
-            <h1>Profile</h1>
-            <p>This is the profile component</p>
-            <p>Username: {profile.username}</p>
-            <p>Games: {profile.games}</p>
+            <Text>Profile</Text>
+            <Text>This is the profile component</Text>
+            <Text>Username: {profile.username}</Text>
+            <Text>Games: {profile.games}</Text>
         </div>
     )
 }

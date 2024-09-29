@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Attribute } from '@/lib/types';
+import Text from './Text';
 
 //'danceability' | 'energy' | 'loudness' | 'speechiness' | 'acousticness' | 'instrumentalness' | 'liveness' | 'valence' | 'tempo' | 'timeSignature' | 'popularity';
 
@@ -12,7 +13,7 @@ export default function Dropdown({ attribute, onChangeAttribute }: { attribute: 
 
   return (
     <div>
-      <h3>Select a Metric</h3>
+      <Text>Select a Metric</Text>
       <select onChange={handleMetricChange} className="form-select" aria-label="Select Metric">
         <option value="" disabled selected>Select a song</option>
         <option value="Popularity">Popularity</option>

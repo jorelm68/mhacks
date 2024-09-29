@@ -1,7 +1,7 @@
 import constants from "@/lib/constants";
 
 interface TextProps {
-    children: string;
+    children: any;
     style?: object;
 }
 
@@ -10,8 +10,8 @@ export default function Text({ children, style }: TextProps) {
     return (
         <p style={{
             // I need to add a new font from google fonts
-            fontFamily: 'Rubik Dirt',
-            color: constants.BRIGHT_PINK,
+            fontFamily: 'Titillium Web',
+            color: 'white',
             ...style,
         }}>{children}</p>
     );

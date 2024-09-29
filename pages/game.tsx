@@ -16,6 +16,7 @@ import { useEffect, useState } from "react";
 import { ProgressBar } from "react-bootstrap";
 import Dropdown from "@/components/Dropdown";
 import Backdrop from "@/components/Backdrop";
+import Text from "@/components/Text";
 
 // List of categories: Danceability, Energy, Key, Loudness, Mode, Speechiness, Acousticness, Instrumentalness, Liveness, Valence, Tempo, Time Signature, Popularity
 // Danceability, Energy, Loudness, Speechiness, Acousticness, Instrumentalness, Liveness, Valence
@@ -55,7 +56,7 @@ export default function GameScreen() {
     }
 
     if (!current_track_index || !game.startTrack || !game.endTrack || loading) {
-        return <p>Loading...</p>;
+        return <Text>Loading...</Text>;
     }
 
     // if (!game.profile1 || !game.profile2) {
@@ -83,7 +84,7 @@ export default function GameScreen() {
         <Backdrop />
             <Navbar />
 
-            {game.name && <h2>{game.name}</h2>}
+            {game.name && <Text>{game.name}</Text>}
 
             <div style={{
                 display: 'flex',

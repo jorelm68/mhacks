@@ -5,6 +5,7 @@ import querystring from "querystring";
 import axios from "axios";
 import api from "@/lib/api";
 import { Res } from "@/lib/types";
+import Text from "@/components/Text";
 
 export default function Callback() {
     const router = useRouter();
@@ -71,11 +72,11 @@ export default function Callback() {
 
     return (
         <div>
-            <h1>Callback</h1>
-            <p>This is the callback page</p>
-            {accessToken && <p>Access token: {accessToken}</p>}
-            {refreshToken && <p>Refresh token: {refreshToken}</p>}
-            {error && <p>{error}</p>}
+            <Text>Callback</Text>
+            <Text>This is the callback page</Text>
+            {accessToken && <Text>Access token: {accessToken}</Text>}
+            {refreshToken && <Text>Refresh token: {refreshToken}</Text>}
+            {error && <Text>{error}</Text>}
         </div>
     )
 }
