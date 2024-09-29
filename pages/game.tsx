@@ -7,6 +7,8 @@ import { useProfile } from "@/hooks/useProfile";
 import { useTrack } from "@/hooks/useTrack";
 import { Game, Profile, Track } from "@/lib/types";
 import { useAppSelector } from "@/redux/hooks";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
 // List of categories: Danceability, Energy, Key, Loudness, Mode, Speechiness, Acousticness, Instrumentalness, Liveness, Valence, Tempo, Time Signature, Popularity
 // Danceability, Energy, Loudness, Speechiness, Acousticness, Instrumentalness, Liveness, Valence
@@ -14,10 +16,24 @@ import { useAppSelector } from "@/redux/hooks";
 // Danceability, Valence (happiness), Loudness, Acousticness
 
 export default function GameScreen() {
+    const router = useRouter();
     const profile_id = useAppSelector(state => state.global.profile_id);
-    if (!profile_id) {
-        return <p>Not authenticated</p>;
-    }
+    const [loading, setLoading] = useState(true);
+    // If the user is not logged in then send them to the home page
+    useEffect(() => {
+        const interval = setInterval(() => {
+            if (!profile_id) {
+                router.push('/');
+            }
+            else {
+                setLoading(false);
+            }
+        }, 10);
+
+        return () => {
+            clearInterval(interval);
+        };
+    }, [])
     const { activeGame }: Profile = useProfile(profile_id);
     const { profile1, profile2, profile1Path, startTrack, endTrack }: Game = useGame(activeGame);
 
@@ -29,7 +45,7 @@ export default function GameScreen() {
         current_track_id = profile1Path[profile1Path.length - 1];
     }
 
-    if (!current_track_id || !startTrack || !endTrack) {
+    if (!current_track_id || !startTrack || !endTrack || loading) {
         return <p>Loading...</p>;
     }
 
@@ -43,6 +59,6 @@ export default function GameScreen() {
             <p>This is the game page</p>
 
             <TrackCard track={current_track} />
-        </> 
+        </>
     )
 }

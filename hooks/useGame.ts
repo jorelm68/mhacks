@@ -10,6 +10,8 @@ export function useGame(game_id: string): Game {
         const fetchGame = async () => {
             try {
                 const res: Res = await api.game.read(game_id);
+
+                console.log(res.data);
                 if (res.success) {
                     setGame(res.data.game as Game);
                 } else {

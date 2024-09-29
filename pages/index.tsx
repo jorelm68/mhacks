@@ -19,6 +19,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 //import { Dropdown } from "react-bootstrap";
 
 export default function Home() {
+  const router = useRouter();
   const dispatch = useDispatch();
   const [profile_id, set_profile_id] = useState<string | null>(null);
 
@@ -48,6 +49,10 @@ export default function Home() {
 
   }, [dispatch]);
 
+  const goToCreateGame = () => {
+    router.push('/create_game');
+  }
+
   return (
     <>
       <Navbar />
@@ -58,6 +63,8 @@ export default function Home() {
       )}
       <ProgressBar />
       <Dropdown />
+
+      <button onClick={goToCreateGame}>Create a new game</button>
     </>
   );
 }
