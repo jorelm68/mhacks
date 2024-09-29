@@ -4,6 +4,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 //'danceability' | 'energy' | 'loudness' | 'speechiness' | 'acousticness' | 'instrumentalness' | 'liveness' | 'valence' | 'tempo' | 'timeSignature' | 'popularity';
 
 const Dropdown = () => {
+    const [selectedMetric, setSelectedMetric] = useState('');
+
+    // Handle change event when user selects a metric
+    const handleMetricChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        setSelectedMetric(event.target.value);  // Update state with the selected metric
+        console.log('Selected Metric:', event.target.value);  // Log the selected metric (optional)
+    };
     return (
       <div className="container mt-4">
         <h3>Select a Metric</h3>

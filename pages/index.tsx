@@ -20,6 +20,7 @@ import { useDispatch } from "react-redux";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavControls from "@/components/NavControls";
 import { useSong } from "@/hooks/useSong";
+import SongCard from "@/components/SongCard";
 //import { Dropdown } from "react-bootstrap";
 
 export default function Home() {
