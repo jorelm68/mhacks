@@ -63,15 +63,15 @@ Ethan McIntyre - methan@umich.edu
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/jorelm68/nextfire-app.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/jorelm68/mhacks.svg?style=for-the-badge
 [contributors-url]: https://www.impact-resume.com//graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/jorelm68/nextfire-app.svg?style=for-the-badge
+[forks-shield]: https://img.shields.io/github/forks/jorelm68/mhacks.svg?style=for-the-badge
 [forks-url]: https://www.impact-resume.com//network/members
-[stars-shield]: https://img.shields.io/github/stars/jorelm68/nextfire-app.svg?style=for-the-badge
+[stars-shield]: https://img.shields.io/github/stars/jorelm68/mhacks.svg?style=for-the-badge
 [stars-url]: https://www.impact-resume.com//stargazers
-[issues-shield]: https://img.shields.io/github/issues/jorelm68/nextfire-app.svg?style=for-the-badge
+[issues-shield]: https://img.shields.io/github/issues/jorelm68/mhacks.svg?style=for-the-badge
 [issues-url]: https://www.impact-resume.com//issues
-[license-shield]: https://img.shields.io/github/license/jorelm68/nextfire-app.svg?style=for-the-badge
+[license-shield]: https://img.shields.io/github/license/jorelm68/mhacks.svg?style=for-the-badge
 [license-url]: https://www.impact-resume.com//blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/ethan-mcintyre68
