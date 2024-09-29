@@ -14,6 +14,7 @@ import { useAppSelector } from "@/redux/hooks";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { ProgressBar } from "react-bootstrap";
+import Dropdown from "@/components/Dropdown";
 
 // List of categories: Danceability, Energy, Key, Loudness, Mode, Speechiness, Acousticness, Instrumentalness, Liveness, Valence, Tempo, Time Signature, Popularity
 // Danceability, Energy, Loudness, Speechiness, Acousticness, Instrumentalness, Liveness, Valence
@@ -76,6 +77,10 @@ export default function GameScreen() {
         console.log(response.data);
     }
 
+    const handleChangeAttribute = (attribute: Attribute): void => {
+        setAttribute(attribute);
+    }
+
     return (
         <>
             <Navbar />
@@ -85,6 +90,7 @@ export default function GameScreen() {
             <TrackCard track_index={game.startTrack} />
             <TrackCard track_index={current_track_index} />
             <TrackCard track_index={game.endTrack} />
+            <Dropdown attribute={attribute} onChangeAttribute={handleChangeAttribute} />
             <NavControls onIncrease={handleIncrease} onDecrease={handleDecrease} />
             <ProgressBar/>
         </>
