@@ -68,10 +68,10 @@ export default function GameScreen() {
     const handleIncrease = async () => {
         const response: Res = await api.game.move(game._id, profile_id, attribute, 1);
 
-        const res: Res = await api.spotify.getProgress(game._id, profile_id);
-        if (res.success) {
-            setProgress(res.data.progress);
-        }
+        // const res: Res = await api.spotify.getProgress(game._id, profile_id);
+        // if (res.success) {
+        //     setProgress(res.data.progress);
+        // }
 
         console.log(response.data);
     }

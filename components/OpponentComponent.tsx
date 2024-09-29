@@ -16,10 +16,10 @@ export default function OpponentComponent({ game, profile_id }: { game: Game, pr
 
         const code = setInterval(async () => {
             try {
-                const response: Res = await api.spotify.getProgress(game._id, profile_id);
-                if (isMounted && response.success) {
-                    setProgress(response.data.progress);
-                }
+                // const response: Res = await api.spotify.getProgress(game._id, profile_id);
+                // if (isMounted && response.success) {
+                //     setProgress(response.data.progress);
+                // }
             } catch (error) {
                 console.error("Error fetching progress", error);
             }
