@@ -71,5 +71,8 @@ export default {
     spotify: {
         getTrack: async (index: number): Promise<Res> => await handleRequest('api/spotify/getTrack', 'POST', { index }),
         getProgress: async (game_id: string, profile_id: string): Promise<Res> => await handleRequest('api/spotify/getProgress', 'POST', { game_id, profile_id }),
-    }
+    },
+    magic: {
+
+    },
 }

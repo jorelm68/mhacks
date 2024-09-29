@@ -96,8 +96,6 @@ export default function GameScreen() {
             <Backdrop />
             <Navbar />
 
-            {game.name && <Text>{game.name}</Text>}
-
             <div style={{
                 display: 'flex',
                 alignItems: 'center',
