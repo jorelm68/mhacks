@@ -3,25 +3,29 @@
 
 import Navbar from "@/components/Navbar";
 import TrackCard from "@/components/TrackCard";
+import NavControls from "@/components/NavControls";
 import WaitingForGame from "@/components/WaitingForGame";
 import { useGame } from "@/hooks/useGame";
 import { useProfile } from "@/hooks/useProfile";
 import { useTrack } from "@/hooks/useTrack";
 import api from "@/lib/api";
-import { Game, Profile, Res, Track } from "@/lib/types";
+import { Attribute, Game, Profile, Res, Track } from "@/lib/types";
 import { useAppSelector } from "@/redux/hooks";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { ProgressBar } from "react-bootstrap";
 
 // List of categories: Danceability, Energy, Key, Loudness, Mode, Speechiness, Acousticness, Instrumentalness, Liveness, Valence, Tempo, Time Signature, Popularity
 // Danceability, Energy, Loudness, Speechiness, Acousticness, Instrumentalness, Liveness, Valence
 
 // Danceability, Valence (happiness), Loudness, Acousticness
 
+
 export default function GameScreen() {
     const router = useRouter();
     const profile_id = useAppSelector(state => state.global.profile_id);
     const [loading, setLoading] = useState(true);
+    const [attribute, setAttribute] = useState<Attribute>('Danceability');
     // If the user is not logged in then send them to the home page
     useEffect(() => {
         const interval = setInterval(() => {
@@ -60,8 +64,14 @@ export default function GameScreen() {
     //     return <WaitingForGame game={game} />;
     // }
 
-    const handleMove = async () => {
-        const response: Res = await api.game.move(game._id, profile_id, 'Danceability', 1);
+    const handleIncrease = async () => {
+        const response: Res = await api.game.move(game._id, profile_id, attribute, 1);
+
+        console.log(response.data);
+    }
+
+    const handleDecrease = async () => {
+        const response: Res = await api.game.move(game._id, profile_id, attribute, 0);
 
         console.log(response.data);
     }
@@ -75,8 +85,9 @@ export default function GameScreen() {
             <TrackCard track_id={game.startTrack} />
             <TrackCard track_id={current_track_id} />
             <TrackCard track_id={game.endTrack} />
-
-            <button onClick={handleMove}>Move</button>
+            <NavControls onIncrease={handleIncrease} onDecrease={handleDecrease} />
+            <ProgressBar/>
+            
         </>
     )
 }
