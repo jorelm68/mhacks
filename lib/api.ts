@@ -73,6 +73,6 @@ export default {
         factoryReset: async (): Promise<Res> => await handleRequest('api/track/factoryReset', 'POST', {}),
     },
     spotify: {
-        getTrack: async (track_id: string, access_token: string): Promise<Res> => await handleRequest('api/spotify/getTrack', 'POST', { track_id, access_token }),
+        getTrack: async (index: number): Promise<Res> => await handleRequest('api/spotify/getTrack', 'POST', { index }),
     }
 }

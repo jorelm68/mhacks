@@ -16,9 +16,7 @@ export default {
         createdAt: new Date(),
         updatedAt: new Date(),
     },
-    EMPTY_SONG: {
-        _id: '',
-
+    EMPTY_TRACK: {
         index: '',
         name: '',
         artist: '',
@@ -36,21 +34,12 @@ export default {
         tempo: 0,
         popularity: 0,
         albumReleaseDate: '',
-        
-        createdAt: new Date(),
-        updatedAt: new Date
     },
     EMPTY_PROFILE: {
         _id: '',
         username: '',
         activeGame: '',
         games: [],
-    },
-    EMPTY_TRACK: {
-        _id: '',
-        index: 0,
-        createdAt: new Date(),
-        updatedAt: new Date(),
     },
     EMPTY_GLOBAL_STATE: {
         profile_id: '',
@@ -62,13 +51,15 @@ export default {
         errorMessage: 'This is the initial response message',
     },
 
-    SERVER_URL: 'https://beck-ethan-mcintyres-projects.vercel.app',
-    // SERVER_URL: 'http://localhost:4000',
+    HOSTED_AT: 'https://mhacks-beta.vercel.app',
+
+    // SERVER_URL: 'https://beck-ethan-mcintyres-projects.vercel.app',
+    SERVER_URL: 'http://localhost:4000',
 
     SPOTIFY_CONFIG: {
         clientId: "f7c02a3be86b4a47a0779eec1eac1281",
         clientSecret: "31f9ed5270b148edadd15b5d6efea510",
-        redirectUri: 'https://mhacks-beta.vercel.app/callback', // Replace with your redirect URI
+        redirectUri: 'http://localhost:3000/callback', // Replace with your redirect URI
         scope: 'user-read-currently-playing user-read-playback-state',
     }
 } 

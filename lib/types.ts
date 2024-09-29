@@ -24,25 +24,16 @@ export type Game = {
     startTime: string,
     profile1EndTime: string,
     profile2EndTime: string,
-    profile1Path: string[],
-    profile2Path: string[],
-    startTrack: string,
-    endTrack: string,
+    profile1Path: number[],
+    profile2Path: number[],
+    startTrack: number,
+    endTrack: number,
 
     createdAt: Date,
     updatedAt: Date,
 }
 
 export type Track = {
-    _id: string,
-    index: number,
-    createdAt: Date,
-    updatedAt: Date,
-}
-
-export type Song = {
-    _id: string,
-    
     index: string,
     name: string,
     artist: string,
@@ -60,7 +51,4 @@ export type Song = {
     tempo: number,
     valence: number,
     albumReleaseDate: string,
-
-    createdAt: Date,
-    updatedAt: Date,
 }
