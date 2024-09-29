@@ -8,6 +8,7 @@ import ProgressBar from "@/components/ProgressBar";
 //import NavigationControls from "@/components/Controls";
 import Dropdown from "@/components/Dropdown";
 import Button from "@/components/Button";
+import CyberwaveSongGame from './test';
 
 import api from "@/lib/api";
 import { Res, Song } from "@/lib/types";
@@ -83,6 +84,7 @@ export default function Home() {
       )}
       <ProgressBar />
       <Dropdown />
+      <CyberwaveSongGame />
 
       {!canCreateGame && <p>You cannot create a new game</p>}
       {canCreateGame && (

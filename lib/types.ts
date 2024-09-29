@@ -43,6 +43,7 @@ export type Track = {
 export type Song = {
     _id: string,
     
+    index: string,
     name: string,
     artist: string,
     album: string,

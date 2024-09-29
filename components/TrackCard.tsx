@@ -1,17 +1,20 @@
-import { Track } from "@/lib/types"
+import { useSong } from "@/hooks/useSong";
+import { Song, Track } from "@/lib/types"
 
 interface TrackProps {
-    track: Track;
+    track_id: string;
 }
 
-export default function TrackCard({ track }: TrackProps) {
+export default function TrackCard({ track_id }: TrackProps) {
+    const song: Song = useSong(track_id);
+
     return (
         <div >
-            <img src={track.albumArt} alt={track.name} />
+            <img src={song.image} alt={song.name} />
 
             <div>
-                <h3>{track.name}</h3>
-                <p>{track.artist}</p>
+                <h3>{song.name}</h3>
+                <p>{song.artist}</p>
             </div>
         </div>
     )
