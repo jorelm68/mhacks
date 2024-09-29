@@ -1,6 +1,7 @@
 import { useTrack } from "@/hooks/useTrack";
 import { isURL } from "@/lib/helper";
 import { Track } from "@/lib/types"
+import { useEffect, useState } from "react";
 
 interface TrackCardProps {
     track_index: number;
@@ -8,9 +9,23 @@ interface TrackCardProps {
 }
 
 export default function TrackCard({ track_index, size }: TrackCardProps) {
-    const track: Track = useTrack(track_index);
+    const {
+        name,
+        image,
+        preview,
+    }: Track = useTrack(track_index);
 
-    console.log(track);
+    const [hideMusic, setHideMusic] = useState(true);
+
+    useEffect(() => {
+        const showButton = async () => {
+            setHideMusic(true);
+            await new Promise(r => setTimeout(r, 10));
+            setHideMusic(false);
+        }
+
+        showButton();
+    }, [preview])
 
     return (
         <div style={{
@@ -19,12 +34,12 @@ export default function TrackCard({ track_index, size }: TrackCardProps) {
             alignItems: 'center',
             justifyContent: 'center',
         }}>
-            {isURL(track.image) ? (
+            {isURL(image) ? (
                 <img
                     style={{
                         borderRadius: '8px',
                     }}
-                    src={track.image}
+                    src={image}
                     width={size === 'small' ? 64 : size === 'medium' ? 200 : 300}
                 />
             ) : (
@@ -43,17 +58,17 @@ export default function TrackCard({ track_index, size }: TrackCardProps) {
                 textAlign: 'center',
                 padding: '0 10px',
                 maxWidth: size === 'small' ? 100 : size === 'medium' ? 200 : 300,
-            }}>{track.name}</p>
+            }}>{name}</p>
 
-            {track.preview && (
+
+            {!hideMusic && preview && (
                 <audio controls style={{
                     width: size === 'small' ? 100 : size === 'medium' ? 200 : 300,
                     marginTop: 10,
                 }}>
-                    <source src={track.preview} type="audio/mpeg" />
+                    <source src={preview} type="audio/mpeg" />
                     Your browser does not support the audio element.
-                </audio>
-            )}
+                </audio>)}
         </div>
     );
 };

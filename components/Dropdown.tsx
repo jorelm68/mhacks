@@ -11,7 +11,7 @@ export default function Dropdown({ attribute, onChangeAttribute }: { attribute: 
   };
 
   return (
-    <div className="container mt-4">
+    <div>
       <h3>Select a Metric</h3>
       <select onChange={handleMetricChange} className="form-select" aria-label="Select Metric">
         <option value="" disabled selected>Select a song</option>
